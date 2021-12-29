@@ -26,3 +26,14 @@ cage.rows[x].cells[y].appendChild(pion);
 // Affiche la cage avec mon pion dedans dans ma div out 
 out.appendChild(cage);
 
+// Ecouter les saisies clavier 
+window.addEventListener('keydown', evt => {
+    console.log(evt.key);
+    // Modifier les coordonnées x et y en fonction de la flèche pressée
+    if(evt.key === 'ArrowUp' && x > 0) x--; // remonte sur axe vertical 
+    else if(evt.key === 'ArrowRight' && y < 4) y++; // se déplace sur la droite
+    else if(evt.key === 'ArrowDown' && x < 4) x++; 
+    else if(evt.key === 'ArrowLeft' && y > 0) y--; 
+    // Mettre à jour la position du pion 
+    cage.rows[x].cells[y].appendChild(pion);
+}, false); 
